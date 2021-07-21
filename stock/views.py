@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from .filters import Item_dstFilter
 import json
+from django.contrib import messages
 
 items = ""
 
@@ -178,7 +179,10 @@ def create_item_list(request):
             upload = Create_ItmDist_Form(request.POST, request.FILES)
             if upload.is_valid():
                 upload.save()
+                messages.success(request, "Item Added successful.")
                 return redirect('create_item_list1')
+            else:
+                messages.error(request, "Item Unsuccessful")
         return render(request, 'cpanel/Item/Create_ItemDist.html', {'upload_form': upload})
 
     
