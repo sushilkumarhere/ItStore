@@ -56,26 +56,24 @@
                     <thead>
                     <tr>
                         <th scope="col">Item Name</th>
-                        <th scope="col">Model No</th>
+                        <th scope="col">Model No[Spec]</th>
                         <th scope="col">Block[room no]/Type</th>
-                        <th scope="col">Dept</th>
-                        <th scope="col">User</th>
+                        <th scope="col">Department/User </th>
                         <th scope="col">Qty</th>
                         <th scope="col">DoP</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                        
-
+                        <th scope="col">Action</th>           
+                     
                     </tr>
                     </thead>
                     <tbody>
                     {% for itm in filter.qs %}
                     <tr>
                         <td>{{ itm.item_name }}</td>
-                        <td>{{ itm.item_model }}</td>
+                        <td>{{ itm.item_model }} <p class="text-primary"> [{{ itm.item_configuration }}]</p></td>
                         <td>{{ itm.acblock }} [{{ itm.room }}] : {{ itm.room_type }}</td>
-                        <td>{{ itm.inst }}</td>
-                        <td>{{ itm.user }}</td>
+                        <td>{{ itm.inst }}<p class="text-primary">{{ itm.user }}</p></td>
+                        
                         <td>{{ itm.item_qty }}</td>
                         <td>{{ itm.purchase_date }}</td>
 
