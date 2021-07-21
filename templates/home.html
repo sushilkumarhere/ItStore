@@ -1,0 +1,91 @@
+<html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<body>
+
+    <!-- Header Area wrapper End -->
+
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+          <div class="container">
+                <div class="section-header text-center">
+                  <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Our Hardware Details</h2>
+                  <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                </div>
+                <div class="row">
+          <!-- Services item -->
+                    <div class="card-deck">
+                          <div class="card border-primary mb-3">
+                               <img src="{% static "assets/img/item/cs.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a rel="nofollow" href="{% url 'computer_list' %}" class="card-title"><h5>Computer Systems</h5></a>
+                                    <div class="card-text"> <h5> {{ computer.item_qty__sum }}</h5> </div>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                          <div class="card border-primary mb-3">
+                                <img src="{% static "assets/img/item/printer.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Printers</h5>
+                                    <div class="card-text"><h5>{{ printer.item_qty__sum }}</h5> </div>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                          <div class="card border-primary mb-3">
+                                <img src="{% static "assets/img/item/projector.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Projector</h5>
+                                  <p class="card-text">{{ projector.item_qty__sum }}</p>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                    </div>
+
+                    <div class="card-deck">
+                          <div class="card border-primary mb-3">
+                               <img src="{% static "assets/img/item/scanner.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Scanner</h5>
+                                  <p class="card-text">{{ scanner.item_qty__sum }}</p>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                          <div class="card border-primary mb-3">
+                                <img src="{% static "assets/img/item/internet.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">UPS</h5>
+                                  <p class="card-text">{{ ups.item_qty__sum }}</p>
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                          <div class="card border-primary mb-3">
+                                <img src="{% static "assets/img/item/software.jpg" %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Software & Application</h5>
+                                    {% for s in software %}
+                                  <p class="card-text">{{ s.software_name }} ({{ s.brand_name }}} <br> </p>
+                                     {% endfor %}
+                                </div>
+                                <div class="card-footer">
+                                  <small class="text-muted">Last updated : {{ updt.updated_at }}</small>
+                                </div>
+                          </div>
+                    </div>
+                </div>
+          </div>
+    </section>
+    <!-- Services Section End -->
+</body>
+{% endblock content %}
+</html>

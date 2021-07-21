@@ -1,0 +1,45 @@
+{% extends "cpanel/AdminBase.html" %}
+{% load static %}
+{% block title %}
+<h4>IT Store</h4>
+{% endblock title %}
+{% block mainblock %}
+<div id="container" style="width: 100%;">
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script>
+          Highcharts.chart('container', {
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  text: 'ITEMS ACADEMIC-BLOCKWISE'
+              },
+              xAxis: {
+                 categories: {{ blocks|safe }}
+              },
+              series: [{
+                  name: 'Computer',
+                  data:{{ computer }},
+                  color: 'green'
+                       },
+                       {
+                  name: 'Printer',
+                  data: {{ printer }},
+                  color: 'red'
+                        },
+                        {
+                  name: 'Projector',
+                  data: {{ projector }},
+                  color: 'yellow'
+                        },
+                        {
+                  name: 'Scanner',
+                  data: {{ scanner }},
+                  color: 'blue'
+                        }
+                     ]
+          });
+    </script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>System Details</title>
+        </head>
+<body>
+{% block content %}
+<section id="services" class="section-padding">
+       <div class="container">
+                    <div class="section-header text-center">
+                      <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">IT Systems Details</h2>
+                      <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                    </div>
+                <!-- Search form -->
+           <form method="get" id="ItemSearch" data-cities-url="{% url 'ajax_load_ItemModel' %}" >
+               {% csrf_token %}
+                    <div class="well">
+                      <div class="row">
+                        <div class="form-group col-sm-4 col-md-3">
+                          {{ filter.form.item_name.label_tag }}
+                          {% render_field filter.form.item_name class="form-control" %}
+                        </div>
+                        <div class="form-group col-sm-4 col-md-3">
+                          {{ filter.form.item_model.label_tag }}
+                          {% render_field filter.form.item_model class="form-control" %}
+                        </div>
+                        <div class="form-group col-sm-4 col-md-3">
+                          {{ filter.form.acblock.label_tag }}
+                          {% render_field filter.form.acblock class="form-control" %}
+                        </div>
+                        <div class="form-group col-sm-4 col-md-3">
+                          {{ filter.form.inst.label_tag }}
+                          {% render_field filter.form.inst class="form-control" %}
+                        </div>
+                        <div class="form-group col-sm-4 col-md-3">
+                          {{ filter.form.room_type.label_tag }}
+                          {% render_field filter.form.room_type class="form-control" %}
+                        </div>
+                         <div class="form-group col-sm-4 col-md-3">
+                             <h6>Search</h6>
+                            <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+                             <a href="{% url 'export_users_xls' %}">Export to Excel</a>
+                         </div>
+                      </div>
+                    </div>
+           </form>
+                  <div class="card">
+                       <div class="table-responsive">
+                           <table class="table">
+                                            <thead>
+                                                  <tr>
+                                                    <th scope="col">Item Name</th>
+                                                    <th scope="col">Model No</th>
+                                                    <th scope="col">Block[room no]/Type</th>
+                                                    <th scope="col">Department</th>
+                                                    <th scope="col">User</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">updated_on</th>
+                                                  </tr>
+                                            </thead>
+                                        <tbody>
+                                           {% for itm in filter.qs %}
+                                          <tr>
+                                            <td>{{ itm.item_name }}</td>
+                                            <td>{{ itm.item_model }}</td>
+                                            <td>{{ itm.acblock }} [{{ itm.room }}] : {{ itm.room_type }}</td>
+                                            <td>{{ itm.inst }}</td>
+                                            <td>{{ itm.user }}</td>
+                                            <td>{{ itm.item_qty }}</td>
+                                            <td>{{ itm.updated_at }}</td>
+                                          </tr>
+                                            {% endfor  %}
+                                        </tbody>
+                           </table>
+                       </div>
+                  </div>
+
+                <!--Pagination-->
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination justify-content-end">
+                            {% if item.has_previous %}
+                              <li class="page-item">
+                                <a class="page-link" href="?page={{ item.previous_page_number }}">Previous</a>
+                              </li>
+                            {% else %}
+                              <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                              </li>
+                            {% endif %}
+                            {% for i in item.paginator.page_range %}
+                              {% if item.number == i %}
+                                <li class="page-item active" aria-current="page">
+                                  <span class="page-link">
+                                    {{ i }}
+                                    <span class="sr-only">(current)</span>
+                                  </span>
+                                </li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if item.has_next %}
+                              <li class="page-item">
+                                <a class="page-link" href="?page={{ item.next_page_number }}">Next</a>
+                              </li>
+                            {% else %}
+                              <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                              </li>
+                            {% endif %}
+                          </ul>
+                         <!--end of Pagination-->
+                            <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Total Quantity :  {{ totality.item_qty__sum }}</h5>
+                                  </div>
+                            </div>
+                        </nav>
+
+       </div>
+
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+              <script>
+                $("#id_item_name").change(function () {
+                  var url = $("#ItemSearch").attr("data-cities-url");
+                  var itemId = $(this).val();
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'item_name': itemId
+                    },
+                    success: function (data) {
+                      $("#id_item_model").html(data);
+                    }
+                  });
+
+                });
+              </script>
+
+
+</body>
+{% endblock content %}
+</html>

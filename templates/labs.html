@@ -1,0 +1,190 @@
+    {% extends "base.html" %}
+    {% load static %}
+    {% block content %}
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Lab Details</title>
+        </head>
+        <body>
+
+            <section id="services" class="section-padding">
+                   <div class="container">
+                                <div class="section-header text-center">
+                                  <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Lab Details</h2>
+                                  <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+                                </div>
+
+                       <!-- Search form -->
+                    <form action="#" method="POST">
+                                {% csrf_token %}
+                              <div class="form-row">
+                                    <div class="col-4">
+                                      <input type="text" class="custom-select custom-select-lg mb-3" name="q" placeholder="Search">
+                                    </div>
+                                    <div class="col-2">
+                                        <select class="custom-select custom-select-lg mb-3"  name = "item_name">
+                                                <option value="0">All Items</option>
+                                                {% for i in in %}
+                                                    <option value="{{ i.pk }}">{{ i.item_name }}</option>
+                                                {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                      <button type="submit" class="btn btn-primary btn-lg active">Search</button>
+                                    </div>
+                              </div>
+                    </form>
+                <!-- End Search form -->
+
+
+
+                       <!-- Lab Section Start -->
+                        <div class="card-deck">
+                              <div class="card border-primary mb-3" style="width: 25rem;">
+                                  <img src="{% static "assets/img/labs/lab_102_b.jpg" %}" class="card-img-top" alt="..."" class="card-img-top" alt="...">
+                                  <div class="card-body">
+
+                                      <figure>
+                                          <blockquote class="blockquote">
+                                            <h5>Programming Lab</h5>
+                                          </blockquote>
+                                          <figcaption class="blockquote-footer">
+                                           IX Block|[102 B]
+                                          </figcaption>
+                                      </figure>
+                                      <p class="text-primary">The course has been designed to make the students aware/trained in the computer,
+                                                     its fundamentals, peripherals; application software’s
+                                                    like MS-Office and the programming so that students can easily operate computers.</p>
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in ItemName_b %}
+                                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                                          <strong> {{ i.item_name }}:</strong><div class="text-primary"> <em>({{ i.item_model }} -> {{ i.item_configuration }})</em> </div>
+                                        <span class="badge bg-primary rounded-pill">{{ i.item_qty }}</span>
+                                      </li>
+                                        {% endfor %}
+                                    </ul>
+                                  <div class="card-body">
+                                      <div class="d-flex justify-content-between align-items-center">
+                                          <h5><strong> Total Computer Systems: </strong> </h5>
+                                          <div class="badge bg-primary rounded-pill"><h5>[{{ ItemQty_b.item_qty__sum }}]</h5>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                           <div class="card border-primary mb-3" style="width: 25rem;">
+                                  <img src="{% static "assets/img/labs/lab_102_c.jpg" %}" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                      <figure>
+                                          <blockquote class="blockquote">
+                                            <h5>Advance Programming Lab</h5>
+                                          </blockquote>
+                                          <figcaption class="blockquote-footer">
+                                           IX Block|[102 C]
+                                          </figcaption>
+                                      </figure>
+                                    <p class="text-primary">This course enables student’s hands on skills
+                                        in .Net programming and also provides guidelines to programming logic generation.
+                                        The main objective of this course is:
+                                        <ul>
+                                          <li> *	Installation of .Net</li>
+                                          <li> *	Programming in VB, C# & ASP.NET</li>
+                                          <li> *	Design Applications</li>
+                                          <li> *	Design the interface</li>
+                                        </ul>
+                                    </p>
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                        {% for i in ItemName_c %}
+                                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                                          <strong> {{ i.item_name }}:</strong><div class="text-primary"> <em>({{ i.item_model }} -> {{ i.item_configuration }})</em> </div>
+                                        <span class="badge bg-primary rounded-pill">{{ i.item_qty }}</span>
+                                      </li>
+                                        {% endfor %}
+                                    </ul>
+                                  <div class="card-body">
+                                      <div class="d-flex justify-content-between align-items-center">
+                                          <h5><strong> Total Computer Systems: </strong> </h5>
+                                          <div class="badge bg-primary rounded-pill"><h5>[{{ ItemQty_c.item_qty__sum }}]</h5>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                   </div>
+                       <!-- Lab Section End Row 1 -->
+
+                       <!-- Lab Section Start Row 2 -->
+                        <div class="card-deck">
+
+                             <div class="card border-primary mb-3" style="width: 25rem;">
+                                      <img src="{% static "assets/img/labs/lab_102_d.jpg" %}" class="card-img-top" alt="...">
+                                      <div class="card-body">
+                                          <figure>
+                                          <blockquote class="blockquote">
+                                            <h5>Web Technology Lab</h5>
+                                          </blockquote>
+                                          <figcaption class="blockquote-footer">
+                                           IX Block|[102 D]
+                                          </figcaption>
+                                      </figure>
+                                        <p class="text-primary">The course has been designed to make the students aware/trained in the computer, its fundamentals,
+                                            peripherals; application software’s like MS-Office so that students can easily operate computers</p>
+                                      </div>
+
+                                        <ul class="list-group list-group-flush">
+                                            {% for i in ItemName_d %}
+                                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                                              <strong> {{ i.item_name }}:</strong><div class="text-primary"> <em>({{ i.item_model }} -> {{ i.item_configuration }})</em> </div>
+                                            <span class="badge bg-primary rounded-pill">{{ i.item_qty }}</span>
+                                          </li>
+                                            {% endfor %}
+                                        </ul>
+                                      <div class="card-body">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <h5><strong> Total Computer Systems: </strong> </h5>
+                                              <div class="badge bg-primary rounded-pill"><h5>[{{ ItemQty_d.item_qty__sum }}]</h5>
+                                              </div>
+                                          </div>
+                                      </div>
+                             </div>
+
+                            <div class="card border-primary mb-3" style="width: 25rem;">
+                                  <img src="{% static "assets/img/labs/lab_102_b.jpg" %}" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                      <figure>
+                                          <blockquote class="blockquote">
+                                            <h5>CAD Lab[1]</h5>
+                                          </blockquote>
+                                          <figcaption class="blockquote-footer">
+                                           IX Block|[102 E]
+                                          </figcaption>
+                                      </figure>
+
+                                    <p class="text-primary">Drafters draw up blueprints and plans for the construction of buildings,
+                                        machinery and the like using computer-aided drafting (CAD) software. With the help of
+                                        this software we can develop blueprints for any number of projects, such as pipelines, highways.  </p>
+                                  </div>
+
+                                    <ul class="list-group list-group-flush">
+                                        {% for i in ItemName_e %}
+                                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                                          <strong> {{ i.item_name }}:</strong><div class="text-primary"> <em>({{ i.item_model }} -> {{ i.item_configuration }})</em> </div>
+                                        <span class="badge bg-primary rounded-pill">{{ i.item_qty }}</span>
+                                      </li>
+                                        {% endfor %}
+                                    </ul>
+                                        <div class="card-body">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <h5><strong> Total Computer Systems: </strong> </h5>
+                                              <div class="badge bg-primary rounded-pill"><h5>[{{ ItemQty_e.item_qty__sum }}]</h5>
+                                              </div>
+                                          </div>
+                                        </div>
+                            </div>
+                       </div>
+            </section>
+        </body>
+    {% endblock content %}
+</html>

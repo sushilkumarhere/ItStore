@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for models in model %}
+<option value="{{ models.pk }}">{{ models.model_name }}</option>
+{% endfor %}

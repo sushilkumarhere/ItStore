@@ -1,0 +1,139 @@
+{% extends "cpanel/AdminBase.html" %}
+{% load static %}
+{% block mainblock %}
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Edit Profile</h4>
+                  <p class="card-category">Complete your profile</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">UserID (disabled)</label>
+                          <input type="text" class="form-control" disabled value="{{ request.user.id }}">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text" class="form-control" value="{{ request.user.username }}">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="email" class="form-control" value="{{ request.user.email }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                          <input type="text" class="form-control"value="{{ request.user.first_name }}">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          <input type="text" class="form-control"value="{{ request.user.last_name }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adress</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">City</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Country</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Postal Code</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>About Me</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating"> About yourself</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                        -->
+                    <div class="col-12">
+                      <div class="card card-body bg-white border-light shadow-sm mb-4">
+                          <h2 class="h5 mb-4">Select profile photo</h2>
+                          <div class="d-xl-flex align-items-center">
+                              
+                              <div class="file-field">
+                                  <div class="d-flex justify-content-xl-center ml-xl-3">
+                                      <div class="d-flex">
+                                        <span class="icon icon-md"><span class="fas fa-paperclip mr-3"></span></span> <input type="file">
+                                        <div class="d-md-block text-left">
+                                            <div class="font-weight-normal text-dark mb-1">Choose Image</div>
+                                            <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+              </div>
+              
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="row">
+                  <div class="col-12 mb-4">
+                      <div class="card border-light text-center p-0">
+                          <div class="profile-cover rounded-top" data-background="{% static 'AdminPanel/static/assets/img/profile-cover.jpg' %}"></div>
+                          <div class="card-body pb-5">
+                              <img src="{% static 'AdminPanel/assets/img/sushil.jpg' %}" class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                              <h4 class="h3">
+                                  {{ request.user.first_name }} {{ request.user.last_name }}
+                              </h4>
+                              <h5 class="font-weight-normal">
+                                  {{ request.user.email }}
+                              </h5>
+                              <p class="text-gray mb-4">UP, INDIA</p>
+                              <a class="btn btn-sm btn-primary mr-2" href="#"><span class="fas fa-user-plus mr-1"></span> Connect</a>
+                              <a class="btn btn-sm btn-secondary" href="#">Send Message</a>
+                          </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+{% endblock mainblock %}

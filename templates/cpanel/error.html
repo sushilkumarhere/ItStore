@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "cpanel/AdminBase.html" %}
+{% load static %}
+{% block mainblock %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">User: {{ user.get_username}} !</h4>
+  <p>You are not authorised to It.</p>
+  <hr>
+  <p class="mb-0">permission denied</p>
+</div>
+
+</body>
+
+{% endblock mainblock %}
+</html>
