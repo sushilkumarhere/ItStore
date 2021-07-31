@@ -20,27 +20,28 @@
             {% csrf_token %}
             <div class="well">
                 <div class="row">
-                    <div class="form-group col-sm-4 col-md-3">
+                &nbsp; &nbsp; &nbsp;&nbsp;                  
+                    <div class="form-group col">
                         {{ filter.form.item_name.label_tag }}
                         {% render_field filter.form.item_name class="form-control" %}
                     </div>
-                    <div class="form-group col-sm-4 col-md-3">
+                    <div class="form-group col">
                         {{ filter.form.item_model.label_tag }}
                         {% render_field filter.form.item_model class="form-control" %}
                     </div>
-                    <div class="form-group col-sm-4 col-md-3">
+                    <div class="form-group col">
                         {{ filter.form.acblock.label_tag }}
                         {% render_field filter.form.acblock class="form-control" %}
                     </div>
-                    <div class="form-group col-sm-4 col-md-3">
+                    <div class="form-group col">
                         {{ filter.form.inst.label_tag }}
                         {% render_field filter.form.inst class="form-control" %}
                     </div>
-                    <div class="form-group col-sm-4 col-md-3">
+                    <div class="form-group col">
                         {{ filter.form.room_type.label_tag }}
                         {% render_field filter.form.room_type class="form-control" %}
                     </div>
-                    <div class="form-group col-sm-4 col-md-3">
+                    <div class="form-group col">
                         <h6>Search</h6>
                         <button type="submit" class="btn btn-primary">
                             <span class="glyphicon glyphicon-search"></span> Search

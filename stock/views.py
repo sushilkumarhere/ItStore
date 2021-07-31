@@ -2,7 +2,7 @@ import xlwt
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
-from stock.forms import Create_ItmDist_Form, item_list_create
+from stock.forms import Create_ItmDist_Form, item_list_update
 from stock.models import ItemDist, ItemName, ItemModel, ac_block
 from django.db.models import Sum, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -137,7 +137,7 @@ def update_item_list(request, item_id, template_name='cpanel/Item/upadate_item_l
         return render(request, 'cpanel/error.html')
     else:
         post = get_object_or_404(ItemDist, pk=item_id)  # ItemDist is a  Model
-        form = item_list_create(request.POST or None, instance=post)
+        form = item_list_update(request.POST or None, instance=post)
         if form.is_valid():
             form.save()
             return redirect('item_list')

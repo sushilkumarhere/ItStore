@@ -1,14 +1,17 @@
 from django import forms
 from .models import ItemDist, ItemModel
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
-class item_list_create(forms.ModelForm):
+class item_list_update(forms.ModelForm):
     class Meta:
         model = ItemDist
         fields = '__all__'
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
+        widgets = {
+            'purchase_date': DateInput(attrs={'type': 'date'})
+                  }
 
 class Create_ItmDist_Form(forms.ModelForm):
     class Meta:
