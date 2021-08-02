@@ -5,7 +5,7 @@ html {
 
 body {
   background: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
   -webkit-box-sizing: border-box;
@@ -45,7 +45,7 @@ p {
   font-weight: 400;
   font-family: 'Open Sans', sans-serif;
   margin: 0px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 ul, ol {
